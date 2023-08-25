@@ -369,7 +369,7 @@ requires setting up an account (free).</p>
 <p>To use RStudio Cloud for the workshop, login to your account and then
 click on this link:</p>
 <p class="indented2">
-<a href='https://posit.cloud/content/xxxxx' target='_blank' ref='noopener' style='font-family:monospace;'>https://posit.cloud/content/xxxxx</a>
+<a href='https://posit.cloud/content/6366989' target='_blank' ref='noopener' style='font-family:monospace;'>https://posit.cloud/content/6366989</a>
 </p>
 <p>This will open a RStudio Cloud project with all the required packages
 and data ready to go (you’ll get the scripts from the slide deck during
@@ -415,7 +415,7 @@ pkgs_req &lt;- c(&quot;sf&quot;, &quot;leaflet&quot;, &quot;tmap&quot;, &quot;tm
               &quot;RColorBrewer&quot;, &quot;raster&quot;, &quot;maps&quot;, &quot;tidyverse&quot;,  &quot;jsonlite&quot;, 
               &quot;rasterVis&quot;, &quot;nngeo&quot;, &quot;lwgeom&quot;, &quot;remotes&quot;, 
               &quot;conflicted&quot;, &quot;tigris&quot;, &quot;tidycensus&quot;, &quot;stars&quot;,
-              &quot;googlesheets4&quot;, &quot;httr&quot;, &quot;rjson&quot;, &quot;RSocrata&quot;, &quot;usethis&quot;, &quot;rinat&quot;,
+              &quot;googlesheets4&quot;, &quot;httr&quot;, &quot;rjson&quot;, &quot;usethis&quot;, &quot;rinat&quot;,
               &quot;ggspatial&quot;, &quot;rosm&quot;, &quot;ggimage&quot;, &quot;wrkshputils&quot;, &quot;palmerpenguins&quot;, &quot;here&quot;,
               &quot;terra&quot;)
 
@@ -426,8 +426,9 @@ pkgs_req &lt;- c(&quot;sf&quot;, &quot;leaflet&quot;, &quot;tmap&quot;, &quot;tm
 if (length(pkgs_missing)) install.packages(pkgs_missing, dependencies=TRUE,
                                            repos = c(getOption(&quot;repos&quot;), &#39;https://ajlyons.r-universe.dev&#39;))
 
-## ESRI2SF (not critical)
+## Install GitHub Packages
 remotes::install_github(&quot;yonghah/esri2sf&quot;)
+remotes::install_github(&quot;Chicago/RSocrata&quot;)
 
 ## Re-run the check for missing packages
 pkgs_missing &lt;- pkgs_req[!(pkgs_req %in% installed.packages()[,&quot;Package&quot;])]

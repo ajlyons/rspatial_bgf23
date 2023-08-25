@@ -348,8 +348,8 @@ class="slide section level1">
 </div>
 <p>RStudio Cloud project for this workshop:</p>
 <p style="font-family:monospace; font-size:110%; text-align:center;">
-<a href="https://posit.cloud/content/xxxxx"
-target="_blank">https://posit.cloud/content/xxxxx</a>
+<a href="https://posit.cloud/content/6366989"
+target="_blank">https://posit.cloud/content/6366989</a>
 </p>
 <p>After it opens, click on ‘Save a Permanent Copy’:</p>
 <p><img src="images/rstudio-cloud_save-perm-copy_334x58.png"
@@ -569,15 +569,15 @@ style="margin-left:2em;" /></p>
 <p>Random number functions:</p>
 <div class="indented2 indented2r">
 <div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" tabindex="-1"></a><span class="fu">runif</span>(<span class="dv">20</span>)</span></code></pre></div>
-<pre><code>##  [1] 0.8023945228 0.7875603717 0.0005075519 0.3842439402 0.0847290638 0.1657208023 0.3294117518
-##  [8] 0.4095888557 0.7414406231 0.8057238145 0.7901983582 0.2134825860 0.8352446074 0.8379996493
-## [15] 0.1206814470 0.1978880861 0.1545600290 0.6839115124 0.3752676817 0.5699044936</code></pre>
+<pre><code>##  [1] 0.13724123 0.90967580 0.95916498 0.28452439 0.94888352 0.87076291 0.17417834 0.20654216 0.02797795
+## [10] 0.77642690 0.28631124 0.55688143 0.76142189 0.76096482 0.33047902 0.60247499 0.27794112 0.42819622
+## [19] 0.96425800 0.55037837</code></pre>
 <div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" tabindex="-1"></a><span class="fu">rnorm</span>(<span class="dv">20</span>)</span></code></pre></div>
-<pre><code>##  [1]  1.14856795  0.78482498 -1.28026716 -1.05545757 -1.05415974 -0.46648160  0.01081679  0.84126062
-##  [9] -0.04283133  0.89257246 -0.45686841 -0.81471256  1.07953391 -1.35834688 -1.63105137  0.35358721
-## [17]  1.76269163 -0.66097946  0.90371007 -0.59218481</code></pre>
+<pre><code>##  [1] -0.71601518  0.31513379  0.61285272 -0.26047050  1.22856538 -0.13902304  0.92643487  0.69292538
+##  [9] -0.49466845  1.36246046  0.09480217  0.46264870  0.19817349  0.03711287  0.63470117 -0.64488792
+## [17] -0.07009347  0.10087078 -2.38676994  0.25094069</code></pre>
 <div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" tabindex="-1"></a><span class="fu">sample</span>(month.abb, <span class="dv">3</span>)</span></code></pre></div>
-<pre><code>## [1] &quot;Sep&quot; &quot;Mar&quot; &quot;Jul&quot;</code></pre>
+<pre><code>## [1] &quot;Aug&quot; &quot;Dec&quot; &quot;Jan&quot;</code></pre>
 </div>
 </div>
 <div id="how-vectors-behave" class="slide section level1">
@@ -623,20 +623,20 @@ style="margin-left:2em;" /></p>
 <div class="indented2 indented2r">
 <div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">runif</span>(<span class="dv">20</span>)</span>
 <span id="cb35-2"><a href="#cb35-2" tabindex="-1"></a>x</span></code></pre></div>
-<pre><code>##  [1] 0.01445912 0.77765856 0.99786050 0.92950163 0.93257805 0.30339214 0.05104894 0.21756209 0.69767660
-## [10] 0.95361770 0.25953763 0.90938586 0.78279966 0.54638701 0.62692468 0.50905153 0.21519073 0.03934321
-## [19] 0.56786968 0.73756099</code></pre>
+<pre><code>##  [1] 0.23954585 0.79841092 0.89756932 0.38030821 0.55317182 0.97689259 0.30902970 0.26473726 0.55716379
+## [10] 0.32610245 0.60075766 0.97095523 0.06638261 0.49895284 0.88185201 0.76691584 0.03952577 0.81796886
+## [19] 0.82337989 0.88776325</code></pre>
 </div>
 <p><br />
 </p>
 <p>Most descriptive stats functions are aggregate:</p>
 <div class="indented2 indented2r">
 <div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" tabindex="-1"></a><span class="fu">mean</span>(x)</span></code></pre></div>
-<pre><code>## [1] 0.5534703</code></pre>
+<pre><code>## [1] 0.5828693</code></pre>
 <div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" tabindex="-1"></a><span class="fu">median</span>(x)</span></code></pre></div>
-<pre><code>## [1] 0.5973972</code></pre>
+<pre><code>## [1] 0.5789607</code></pre>
 <div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" tabindex="-1"></a><span class="fu">sd</span>(x)</span></code></pre></div>
-<pre><code>## [1] 0.3338808</code></pre>
+<pre><code>## [1] 0.303715</code></pre>
 </div>
 <p><br />
 </p>
