@@ -80,9 +80,11 @@ my_nums > 5
 
 my_nums == 5
 
-# How many numbers are less than or equal to 3?
+# How many numbers are less than 3?
 
-my_nums <= 3
+my_nums < 3
+
+sum(my_nums < 3)
 
 ## Saving the results of Logical tests 
 
@@ -95,6 +97,19 @@ my_months = sample(month.abb, 50, replace = TRUE)
 my_months
 
 table(my_months)
+
+#############################################
+## CHALLENGE QUESTIONS
+#############################################
+
+## Generate a vector of numbers from 1 to 10 - squared
+
+# Generate a vector of integers from 10 to 20, and save it to an object x1
+
+# Take the square x1 and save it as x2
+
+# How many of the values of x2 are less than 200?
+
 
 #############################################
 ## SUBSETTING VECTORS
@@ -122,26 +137,12 @@ var[5:7]
 var[7:5]
 
 ## You can also pass logical values
-
-pick_me = c(T, T, F, F, F, T, F, T, F, T)
-var[pick_me]
-
-## Or better still, an expression that returns logical values
-
-big_num = (var >= 8)
-big_num
-
-var[big_num]
-
-## More compactly:
+var >= 8
 
 var[ var >= 8 ]
 
 ## Return elements of var that are divisible by 3:
 
 var[var %% 3 == 0]
-
-
-
 
 
