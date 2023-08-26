@@ -348,8 +348,8 @@ class="slide section level1">
 </div>
 <p>RStudio Cloud project for this workshop:</p>
 <p style="font-family:monospace; font-size:110%; text-align:center;">
-<a href="https://posit.cloud/content/6366989"
-target="_blank">https://posit.cloud/content/6366989</a>
+<a href="https://posit.cloud/content/6379477"
+target="_blank">https://posit.cloud/content/6379477</a>
 </p>
 <p>After it opens, click on ‘Save a Permanent Copy’:</p>
 <p><img src="images/rstudio-cloud_save-perm-copy_334x58.png"
@@ -554,12 +554,11 @@ style="margin-left:2em;" /></p>
 <p>Some built-in constants are also vectors:</p>
 <div class="indented2 indented2r">
 <div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a>LETTERS</span></code></pre></div>
-<pre><code>##  [1] &quot;A&quot; &quot;B&quot; &quot;C&quot; &quot;D&quot; &quot;E&quot; &quot;F&quot; &quot;G&quot; &quot;H&quot; &quot;I&quot; &quot;J&quot; &quot;K&quot; &quot;L&quot; &quot;M&quot; &quot;N&quot; &quot;O&quot; &quot;P&quot; &quot;Q&quot; &quot;R&quot; &quot;S&quot; &quot;T&quot; &quot;U&quot; &quot;V&quot; &quot;W&quot; &quot;X&quot; &quot;Y&quot;
-## [26] &quot;Z&quot;</code></pre>
+<pre><code>##  [1] &quot;A&quot; &quot;B&quot; &quot;C&quot; &quot;D&quot; &quot;E&quot; &quot;F&quot; &quot;G&quot; &quot;H&quot; &quot;I&quot; &quot;J&quot; &quot;K&quot; &quot;L&quot; &quot;M&quot; &quot;N&quot; &quot;O&quot; &quot;P&quot; &quot;Q&quot; &quot;R&quot; &quot;S&quot; &quot;T&quot; &quot;U&quot; &quot;V&quot; &quot;W&quot; &quot;X&quot; &quot;Y&quot; &quot;Z&quot;</code></pre>
 <div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a>state.abb</span></code></pre></div>
-<pre><code>##  [1] &quot;AL&quot; &quot;AK&quot; &quot;AZ&quot; &quot;AR&quot; &quot;CA&quot; &quot;CO&quot; &quot;CT&quot; &quot;DE&quot; &quot;FL&quot; &quot;GA&quot; &quot;HI&quot; &quot;ID&quot; &quot;IL&quot; &quot;IN&quot; &quot;IA&quot; &quot;KS&quot; &quot;KY&quot; &quot;LA&quot; &quot;ME&quot; &quot;MD&quot;
-## [21] &quot;MA&quot; &quot;MI&quot; &quot;MN&quot; &quot;MS&quot; &quot;MO&quot; &quot;MT&quot; &quot;NE&quot; &quot;NV&quot; &quot;NH&quot; &quot;NJ&quot; &quot;NM&quot; &quot;NY&quot; &quot;NC&quot; &quot;ND&quot; &quot;OH&quot; &quot;OK&quot; &quot;OR&quot; &quot;PA&quot; &quot;RI&quot; &quot;SC&quot;
-## [41] &quot;SD&quot; &quot;TN&quot; &quot;TX&quot; &quot;UT&quot; &quot;VT&quot; &quot;VA&quot; &quot;WA&quot; &quot;WV&quot; &quot;WI&quot; &quot;WY&quot;</code></pre>
+<pre><code>##  [1] &quot;AL&quot; &quot;AK&quot; &quot;AZ&quot; &quot;AR&quot; &quot;CA&quot; &quot;CO&quot; &quot;CT&quot; &quot;DE&quot; &quot;FL&quot; &quot;GA&quot; &quot;HI&quot; &quot;ID&quot; &quot;IL&quot; &quot;IN&quot; &quot;IA&quot; &quot;KS&quot; &quot;KY&quot; &quot;LA&quot; &quot;ME&quot; &quot;MD&quot; &quot;MA&quot;
+## [22] &quot;MI&quot; &quot;MN&quot; &quot;MS&quot; &quot;MO&quot; &quot;MT&quot; &quot;NE&quot; &quot;NV&quot; &quot;NH&quot; &quot;NJ&quot; &quot;NM&quot; &quot;NY&quot; &quot;NC&quot; &quot;ND&quot; &quot;OH&quot; &quot;OK&quot; &quot;OR&quot; &quot;PA&quot; &quot;RI&quot; &quot;SC&quot; &quot;SD&quot; &quot;TN&quot;
+## [43] &quot;TX&quot; &quot;UT&quot; &quot;VT&quot; &quot;VA&quot; &quot;WA&quot; &quot;WV&quot; &quot;WI&quot; &quot;WY&quot;</code></pre>
 <div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a>month.name</span></code></pre></div>
 <pre><code>##  [1] &quot;January&quot;   &quot;February&quot;  &quot;March&quot;     &quot;April&quot;     &quot;May&quot;       &quot;June&quot;      &quot;July&quot;      &quot;August&quot;   
 ##  [9] &quot;September&quot; &quot;October&quot;   &quot;November&quot;  &quot;December&quot;</code></pre>
@@ -569,15 +568,15 @@ style="margin-left:2em;" /></p>
 <p>Random number functions:</p>
 <div class="indented2 indented2r">
 <div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" tabindex="-1"></a><span class="fu">runif</span>(<span class="dv">20</span>)</span></code></pre></div>
-<pre><code>##  [1] 0.13724123 0.90967580 0.95916498 0.28452439 0.94888352 0.87076291 0.17417834 0.20654216 0.02797795
-## [10] 0.77642690 0.28631124 0.55688143 0.76142189 0.76096482 0.33047902 0.60247499 0.27794112 0.42819622
-## [19] 0.96425800 0.55037837</code></pre>
+<pre><code>##  [1] 0.28960558 0.75506059 0.81382127 0.84026429 0.26750383 0.76233468 0.08651249 0.11651580 0.91137763
+## [10] 0.83986285 0.21201486 0.87102117 0.33150280 0.54795351 0.82083292 0.89807044 0.18071378 0.04501254
+## [19] 0.17348171 0.71289717</code></pre>
 <div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" tabindex="-1"></a><span class="fu">rnorm</span>(<span class="dv">20</span>)</span></code></pre></div>
-<pre><code>##  [1] -0.71601518  0.31513379  0.61285272 -0.26047050  1.22856538 -0.13902304  0.92643487  0.69292538
-##  [9] -0.49466845  1.36246046  0.09480217  0.46264870  0.19817349  0.03711287  0.63470117 -0.64488792
-## [17] -0.07009347  0.10087078 -2.38676994  0.25094069</code></pre>
+<pre><code>##  [1]  0.005138621  1.306360544  0.669559672 -1.209143616  0.524340842  0.249217890 -1.275267769  0.567249864
+##  [9]  1.418774903  0.937092319  0.247763389  0.106870124  0.642635125  1.329374019 -1.490548528  0.496423820
+## [17]  1.094050008 -1.436988564  0.383092993  0.685422867</code></pre>
 <div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" tabindex="-1"></a><span class="fu">sample</span>(month.abb, <span class="dv">3</span>)</span></code></pre></div>
-<pre><code>## [1] &quot;Aug&quot; &quot;Dec&quot; &quot;Jan&quot;</code></pre>
+<pre><code>## [1] &quot;Feb&quot; &quot;Nov&quot; &quot;Dec&quot;</code></pre>
 </div>
 </div>
 <div id="how-vectors-behave" class="slide section level1">
@@ -623,20 +622,20 @@ style="margin-left:2em;" /></p>
 <div class="indented2 indented2r">
 <div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">runif</span>(<span class="dv">20</span>)</span>
 <span id="cb35-2"><a href="#cb35-2" tabindex="-1"></a>x</span></code></pre></div>
-<pre><code>##  [1] 0.23954585 0.79841092 0.89756932 0.38030821 0.55317182 0.97689259 0.30902970 0.26473726 0.55716379
-## [10] 0.32610245 0.60075766 0.97095523 0.06638261 0.49895284 0.88185201 0.76691584 0.03952577 0.81796886
-## [19] 0.82337989 0.88776325</code></pre>
+<pre><code>##  [1] 0.07776018 0.44457585 0.10576955 0.63342743 0.48043781 0.32770250 0.16562554 0.47371626 0.12380912
+## [10] 0.60824224 0.51544928 0.78518140 0.46762915 0.78595145 0.74019471 0.29814875 0.96499245 0.47281923
+## [19] 0.67874978 0.96527849</code></pre>
 </div>
 <p><br />
 </p>
 <p>Most descriptive stats functions are aggregate:</p>
 <div class="indented2 indented2r">
 <div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" tabindex="-1"></a><span class="fu">mean</span>(x)</span></code></pre></div>
-<pre><code>## [1] 0.5828693</code></pre>
+<pre><code>## [1] 0.5057731</code></pre>
 <div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" tabindex="-1"></a><span class="fu">median</span>(x)</span></code></pre></div>
-<pre><code>## [1] 0.5789607</code></pre>
+<pre><code>## [1] 0.477077</code></pre>
 <div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" tabindex="-1"></a><span class="fu">sd</span>(x)</span></code></pre></div>
-<pre><code>## [1] 0.303715</code></pre>
+<pre><code>## [1] 0.2693</code></pre>
 </div>
 <p><br />
 </p>
