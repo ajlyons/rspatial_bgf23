@@ -568,15 +568,15 @@ style="margin-left:2em;" /></p>
 <p>Random number functions:</p>
 <div class="indented2 indented2r">
 <div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" tabindex="-1"></a><span class="fu">runif</span>(<span class="dv">20</span>)</span></code></pre></div>
-<pre><code>##  [1] 0.28960558 0.75506059 0.81382127 0.84026429 0.26750383 0.76233468 0.08651249 0.11651580 0.91137763
-## [10] 0.83986285 0.21201486 0.87102117 0.33150280 0.54795351 0.82083292 0.89807044 0.18071378 0.04501254
-## [19] 0.17348171 0.71289717</code></pre>
+<pre><code>##  [1] 0.02662088 0.13340248 0.01308346 0.10636881 0.05060329 0.18301427 0.37775614 0.52327276 0.48752999
+## [10] 0.59091664 0.31627813 0.36099556 0.57362491 0.26451426 0.99682854 0.99483162 0.15953640 0.09694009
+## [19] 0.79381002 0.18473804</code></pre>
 <div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" tabindex="-1"></a><span class="fu">rnorm</span>(<span class="dv">20</span>)</span></code></pre></div>
-<pre><code>##  [1]  0.005138621  1.306360544  0.669559672 -1.209143616  0.524340842  0.249217890 -1.275267769  0.567249864
-##  [9]  1.418774903  0.937092319  0.247763389  0.106870124  0.642635125  1.329374019 -1.490548528  0.496423820
-## [17]  1.094050008 -1.436988564  0.383092993  0.685422867</code></pre>
+<pre><code>##  [1] -0.11367220  0.63450361 -0.76678194 -0.87137607  0.26152909 -0.36032662 -0.77458663 -0.72435177
+##  [9] -0.51205314  2.81045832 -0.83749604  1.38507344  0.96491111 -0.25783595  0.09732519 -0.13385606
+## [17]  0.07288751  0.17598148  1.72803691  1.47350546</code></pre>
 <div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" tabindex="-1"></a><span class="fu">sample</span>(month.abb, <span class="dv">3</span>)</span></code></pre></div>
-<pre><code>## [1] &quot;Feb&quot; &quot;Nov&quot; &quot;Dec&quot;</code></pre>
+<pre><code>## [1] &quot;Jun&quot; &quot;Apr&quot; &quot;Nov&quot;</code></pre>
 </div>
 </div>
 <div id="how-vectors-behave" class="slide section level1">
@@ -622,20 +622,20 @@ style="margin-left:2em;" /></p>
 <div class="indented2 indented2r">
 <div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">runif</span>(<span class="dv">20</span>)</span>
 <span id="cb35-2"><a href="#cb35-2" tabindex="-1"></a>x</span></code></pre></div>
-<pre><code>##  [1] 0.07776018 0.44457585 0.10576955 0.63342743 0.48043781 0.32770250 0.16562554 0.47371626 0.12380912
-## [10] 0.60824224 0.51544928 0.78518140 0.46762915 0.78595145 0.74019471 0.29814875 0.96499245 0.47281923
-## [19] 0.67874978 0.96527849</code></pre>
+<pre><code>##  [1] 0.42159813 0.61832633 0.05854987 0.23159154 0.72874117 0.89140418 0.53919111 0.11249800 0.98780518
+## [10] 0.58417405 0.27359864 0.44429132 0.46431731 0.93949912 0.57979870 0.53560749 0.83597215 0.30039818
+## [19] 0.73631976 0.66104009</code></pre>
 </div>
 <p><br />
 </p>
 <p>Most descriptive stats functions are aggregate:</p>
 <div class="indented2 indented2r">
 <div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" tabindex="-1"></a><span class="fu">mean</span>(x)</span></code></pre></div>
-<pre><code>## [1] 0.5057731</code></pre>
+<pre><code>## [1] 0.5472361</code></pre>
 <div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" tabindex="-1"></a><span class="fu">median</span>(x)</span></code></pre></div>
-<pre><code>## [1] 0.477077</code></pre>
+<pre><code>## [1] 0.5594949</code></pre>
 <div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" tabindex="-1"></a><span class="fu">sd</span>(x)</span></code></pre></div>
-<pre><code>## [1] 0.2693</code></pre>
+<pre><code>## [1] 0.2651341</code></pre>
 </div>
 <p><br />
 </p>
@@ -681,14 +681,61 @@ values.</p>
 <div class="indented2 indented2r">
 <div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" tabindex="-1"></a>LETTERS[<span class="fu">c</span>(T,T,T,T,T,T,T,T,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F)]</span></code></pre></div>
 <pre><code>## [1] &quot;A&quot; &quot;B&quot; &quot;C&quot; &quot;D&quot; &quot;E&quot; &quot;F&quot; &quot;G&quot; &quot;H&quot;</code></pre>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" tabindex="-1"></a>x <span class="ot">=</span> (<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>) <span class="sc">*</span> <span class="dv">3</span></span>
+<span id="cb53-2"><a href="#cb53-2" tabindex="-1"></a>x</span></code></pre></div>
+<pre><code>## [1]  3  6  9 12 15</code></pre>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" tabindex="-1"></a>x[<span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">FALSE</span>, <span class="cn">FALSE</span>, <span class="cn">TRUE</span>)]</span></code></pre></div>
+<pre><code>## [1]  3 15</code></pre>
 </div>
 <p><br />
 </p>
 <p>Better still, use an expression that returns a vector of logical
 values:</p>
 <div class="indented2 indented2r">
-<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" tabindex="-1"></a>state.abb[ <span class="fu">substr</span>(state.abb, <span class="dv">1</span>, <span class="dv">1</span>) <span class="sc">==</span> <span class="st">&quot;N&quot;</span> ]</span></code></pre></div>
-<pre><code>## [1] &quot;NE&quot; &quot;NV&quot; &quot;NH&quot; &quot;NJ&quot; &quot;NM&quot; &quot;NY&quot; &quot;NC&quot; &quot;ND&quot;</code></pre>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" tabindex="-1"></a>x <span class="sc">&gt;</span> <span class="dv">10</span></span></code></pre></div>
+<pre><code>## [1] FALSE FALSE FALSE  TRUE  TRUE</code></pre>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" tabindex="-1"></a>x[ x <span class="sc">&gt;</span> <span class="dv">10</span> ]</span></code></pre></div>
+<pre><code>## [1] 12 15</code></pre>
+</div>
+<p><br />
+</p>
+</div>
+<div id="plotting" class="slide section level1">
+<h1>Plotting</h1>
+<p>Base R has simple plotting functions you can use to view the
+distribution of data.</p>
+<p><br />
+</p>
+<h2 id="histograms">Histograms</h2>
+<p>To make a histogram, use <code>hist()</code>:</p>
+<div class="indented2 indented2r">
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1" tabindex="-1"></a>my_vals <span class="ot">=</span> <span class="fu">rnorm</span>(<span class="dv">500</span>)</span>
+<span id="cb61-2"><a href="#cb61-2" tabindex="-1"></a><span class="fu">hist</span>(my_vals)</span></code></pre></div>
+<p><img src="r-intro01-getting-started_files/figure-slidy/unnamed-chunk-24-1.png" width="768" /></p>
+</div>
+<p><br />
+</p>
+<h2 id="box-plots">Box Plots</h2>
+<p>Prefer a box plot?</p>
+<div class="indented2 indented2r">
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" tabindex="-1"></a><span class="fu">boxplot</span>(my_vals)</span></code></pre></div>
+<p><img src="r-intro01-getting-started_files/figure-slidy/unnamed-chunk-25-1.png" width="768" /></p>
+</div>
+<p><br />
+</p>
+<h2 id="scatter-plots">Scatter Plots</h2>
+<p>The versatile <code>plot()</code> can be used to make a simple
+scatter plot:</p>
+<div class="indented2 indented2r">
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>, <span class="at">y =</span> <span class="fu">runif</span>(<span class="dv">20</span>))</span></code></pre></div>
+<p><img src="r-intro01-getting-started_files/figure-slidy/unnamed-chunk-26-1.png" width="768" /></p>
+</div>
+<p><br />
+</p>
+<h2 id="line-plots">Line Plots</h2>
+<div class="indented2 indented2r">
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>, <span class="at">y =</span> <span class="fu">runif</span>(<span class="dv">20</span>), <span class="at">type =</span> <span class="st">&quot;b&quot;</span>)</span></code></pre></div>
+<p><img src="r-intro01-getting-started_files/figure-slidy/unnamed-chunk-27-1.png" width="768" /></p>
 </div>
 <p><br />
 </p>

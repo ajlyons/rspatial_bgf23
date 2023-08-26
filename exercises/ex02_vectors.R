@@ -1,11 +1,3 @@
-##################################################
-## EXERCISE 02: Object classes, vectors
-##################################################
-
-## All R objects have a class
-
-
-
 #############################################
 ## VECTORS
 #############################################
@@ -99,19 +91,6 @@ my_months
 table(my_months)
 
 #############################################
-## CHALLENGE QUESTIONS
-#############################################
-
-## Generate a vector of numbers from 1 to 10 - squared
-
-# Generate a vector of integers from 10 to 20, and save it to an object x1
-
-# Take the square x1 and save it as x2
-
-# How many of the values of x2 are less than 200?
-
-
-#############################################
 ## SUBSETTING VECTORS
 #############################################
 
@@ -144,5 +123,32 @@ var[ var >= 8 ]
 ## Return elements of var that are divisible by 3:
 
 var[var %% 3 == 0]
+
+#############################################
+## CHALLENGE QUESTIONS
+#############################################
+
+# Generate a vector of integers from 10 to 20, and save it to an object x1
+
+# Take the square x1 and save it as x2
+
+# How many of the values of x2 are less than 200?
+
+
+#############################################
+## Basic Plotting
+
+x = rnorm(500)
+
+hist(x)
+
+boxplot(x)
+
+plot(x)
+
+y = rnorm(500)
+
+plot(x, y)
+
 
 
