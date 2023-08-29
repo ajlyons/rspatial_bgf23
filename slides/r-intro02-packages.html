@@ -474,10 +474,10 @@ into the next function.</p>
 commands to be written like a sentence.</p>
 <h2 id="example">Example</h2>
 <p>Consider the expression:</p>
-<p style="text-align:center; font-family:Consolas, monospace;">
+<p style="text-align:center; font-family:Consolas, monospace; font-size:120%;">
 zoo(moo(boo(foo(99)),n=4))
 </p>
-<div style='position:relative; border:none; height:346px;width:901px; margin:0 auto; '>
+<div style='position:relative; border:none; height:192px;width:797px; margin:0 auto; '>
 <img src="images/functions-piping_001.png" class="incremental stackme"/>
 <img src="images/functions-piping_002.png" class="incremental stackme"/>
 <img src="images/functions-piping_003.png" class="incremental stackme"/>
@@ -518,7 +518,7 @@ them <em>starting with the 2nd argument</em> (or use named
 arguments):</p>
 <div class="indented2 indented2r">
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="fu">runif</span>(<span class="dv">5</span>) <span class="sc">|&gt;</span> <span class="fu">round</span>(<span class="dv">2</span>)</span></code></pre></div>
-<pre><code>## [1] 0.30 0.95 0.63 0.05 0.87</code></pre>
+<pre><code>## [1] 0.76 0.83 0.76 0.08 0.77</code></pre>
 </div>
 <p><br />
 </p>
@@ -546,24 +546,6 @@ style="display:block; margin:1em auto; border:none;" /></p>
 <p><br />
 </p>
 </div>
-<div id="more-piping-tricks" class="slide section level1">
-<h1>More Piping Tricks</h1>
-<p>Need to pipe to an argument that <em>isn’t the first</em>? Indicate
-where pipe values should go with a dot:</p>
-<div class="indented2 indented2r">
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a><span class="do">## gsub() does find-replace on character values:</span></span>
-<span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a><span class="fu">c</span>(<span class="st">&quot;apple&quot;</span>, <span class="st">&quot;banana&quot;</span>, <span class="st">&quot;pear&quot;</span>) <span class="sc">%&gt;%</span> <span class="fu">gsub</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;-&quot;</span>, .)</span></code></pre></div>
-<pre><code>## [1] &quot;-pple&quot;  &quot;b-n-n-&quot; &quot;pe-r&quot;</code></pre>
-</div>
-<p><br />
-</p>
-<p>You can do the same thing with the native pipe using the
-<code>_</code>, but you also have to name the argument:</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a><span class="fu">c</span>(<span class="st">&quot;apple&quot;</span>, <span class="st">&quot;banana&quot;</span>, <span class="st">&quot;pear&quot;</span>) <span class="sc">|&gt;</span> <span class="fu">gsub</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;-&quot;</span>, <span class="at">x =</span> _)</span></code></pre></div>
-<pre><code>## [1] &quot;-pple&quot;  &quot;b-n-n-&quot; &quot;pe-r&quot;</code></pre>
-<p><br />
-</p>
-</div>
 <div id="same-function-name-different-packages"
 class="slide section level1">
 <h1>Same Function Name, Different Packages</h1>
@@ -572,11 +554,11 @@ use the same name. <img src="images/sad-face-32x32.png" /></p>
 <p>When this happens, R will use whichever one was loaded first.</p>
 <p>Best practice: use the package name and the <code>::</code> reference
 to specify which package a function is from.</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> sp<span class="sc">::</span><span class="fu">over</span>()</span>
-<span id="cb13-2"><a href="#cb13-2" tabindex="-1"></a>x <span class="ot">&lt;-</span> grDevices<span class="sc">::</span><span class="fu">over</span>()</span>
-<span id="cb13-3"><a href="#cb13-3" tabindex="-1"></a></span>
-<span id="cb13-4"><a href="#cb13-4" tabindex="-1"></a>y <span class="ot">&lt;-</span> raster<span class="sc">::</span><span class="fu">select</span>()</span>
-<span id="cb13-5"><a href="#cb13-5" tabindex="-1"></a>y <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">select</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> sp<span class="sc">::</span><span class="fu">over</span>()</span>
+<span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a>x <span class="ot">&lt;-</span> grDevices<span class="sc">::</span><span class="fu">over</span>()</span>
+<span id="cb9-3"><a href="#cb9-3" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" tabindex="-1"></a>y <span class="ot">&lt;-</span> raster<span class="sc">::</span><span class="fu">select</span>()</span>
+<span id="cb9-5"><a href="#cb9-5" tabindex="-1"></a>y <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">select</span>()</span></code></pre></div>
 <div class="tip">
 <p>When you use the <em><code>package_name::function_name</code></em>
 syntax, you don’t actually have to first load the package with
@@ -593,16 +575,16 @@ whichever package was loaded first.</p>
 duplicate function names, by specifying which one to prioritize <em>no
 matter what order</em> they were loaded.</p>
 <div class="indented1 indented1r">
-<div class="sourceCode" id="cb14"><pre
-class="sourceCode r klippy copyme"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a><span class="fu">library</span>(conflicted)</span>
-<span id="cb14-2"><a href="#cb14-2" tabindex="-1"></a></span>
-<span id="cb14-3"><a href="#cb14-3" tabindex="-1"></a><span class="co"># Set conflict preference</span></span>
-<span id="cb14-4"><a href="#cb14-4" tabindex="-1"></a><span class="fu">conflict_prefer</span>(<span class="st">&quot;filter&quot;</span>, <span class="st">&quot;dplyr&quot;</span>)</span>
-<span id="cb14-5"><a href="#cb14-5" tabindex="-1"></a><span class="fu">conflict_prefer</span>(<span class="st">&quot;count&quot;</span>, <span class="st">&quot;dplyr&quot;</span>)</span>
-<span id="cb14-6"><a href="#cb14-6" tabindex="-1"></a><span class="fu">conflict_prefer</span>(<span class="st">&quot;select&quot;</span>, <span class="st">&quot;dplyr&quot;</span>)</span>
-<span id="cb14-7"><a href="#cb14-7" tabindex="-1"></a></span>
-<span id="cb14-8"><a href="#cb14-8" tabindex="-1"></a><span class="co"># From here on out, anytime we call select() or filter(), R will</span></span>
-<span id="cb14-9"><a href="#cb14-9" tabindex="-1"></a><span class="co"># always use the dplyr version.</span></span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre
+class="sourceCode r klippy copyme"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a><span class="fu">library</span>(conflicted)</span>
+<span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a></span>
+<span id="cb10-3"><a href="#cb10-3" tabindex="-1"></a><span class="co"># Set conflict preference</span></span>
+<span id="cb10-4"><a href="#cb10-4" tabindex="-1"></a><span class="fu">conflict_prefer</span>(<span class="st">&quot;filter&quot;</span>, <span class="st">&quot;dplyr&quot;</span>)</span>
+<span id="cb10-5"><a href="#cb10-5" tabindex="-1"></a><span class="fu">conflict_prefer</span>(<span class="st">&quot;count&quot;</span>, <span class="st">&quot;dplyr&quot;</span>)</span>
+<span id="cb10-6"><a href="#cb10-6" tabindex="-1"></a><span class="fu">conflict_prefer</span>(<span class="st">&quot;select&quot;</span>, <span class="st">&quot;dplyr&quot;</span>)</span>
+<span id="cb10-7"><a href="#cb10-7" tabindex="-1"></a></span>
+<span id="cb10-8"><a href="#cb10-8" tabindex="-1"></a><span class="co"># From here on out, anytime we call select() or filter(), R will</span></span>
+<span id="cb10-9"><a href="#cb10-9" tabindex="-1"></a><span class="co"># always use the dplyr version.</span></span></code></pre></div>
 </div>
 </div>
 <p><br />
@@ -630,6 +612,7 @@ other name….</h2>
 <p><em>aka</em>:<br />
 - record<br />
 - case<br />
+- observation<br />
 - feature (spatial)</p>
 </div>
 <div style="display:inline-block; border:none;">
@@ -664,7 +647,7 @@ other name….</h2>
 <h2 id="pulling-out-a-single-column">Pulling out a Single Column</h2>
 <p>To get an individual column, use <code>$</code></p>
 <div class="indented2 indented2r">
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a><span class="fu">head</span>(trees)</span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a><span class="fu">head</span>(trees)</span></code></pre></div>
 <pre><code>##   Girth Height Volume
 ## 1   8.3     70   10.3
 ## 2   8.6     65   10.3
@@ -672,9 +655,9 @@ other name….</h2>
 ## 4  10.5     72   16.4
 ## 5  10.7     81   18.8
 ## 6  10.8     83   19.7</code></pre>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" tabindex="-1"></a>trees<span class="sc">$</span>Height</span></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a>trees<span class="sc">$</span>Height</span></code></pre></div>
 <pre><code>##  [1] 70 65 63 72 81 83 66 75 80 75 79 76 76 69 75 74 85 86 71 64 78 80 74 72 77 81 82 80 80 80 87</code></pre>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" tabindex="-1"></a>trees<span class="sc">$</span>Height <span class="sc">|&gt;</span> <span class="fu">summary</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a>trees<span class="sc">$</span>Height <span class="sc">|&gt;</span> <span class="fu">summary</span>()</span></code></pre></div>
 <pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
 ##      63      72      76      76      80      87</code></pre>
 </div>
@@ -708,7 +691,7 @@ class="slide section level1">
 working directory</strong>.</p>
 <p>Complete path:</p>
 <div class="indented2">
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" tabindex="-1"></a>my_data <span class="ot">=</span> <span class="fu">read.csv</span>(<span class="st">&quot;C:/Users/Andy/Documents/LREC/n2_study/plots/plot34a/data/soil_moist.csv&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" tabindex="-1"></a>my_data <span class="ot">=</span> <span class="fu">read.csv</span>(<span class="st">&quot;C:/Users/Andy/Documents/LREC/n2_study/plots/plot34a/data/soil_moist.csv&quot;</span>)</span></code></pre></div>
 </div>
 <p><br />
 </p>
@@ -736,7 +719,7 @@ class="slide section level1">
 working directory.</p>
 <p>You can view the current working directory with:</p>
 <div class="indented2">
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" tabindex="-1"></a><span class="fu">getwd</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" tabindex="-1"></a><span class="fu">getwd</span>()</span></code></pre></div>
 </div>
 <p><br />
 </p>
@@ -746,7 +729,7 @@ working directory.</p>
 </center>
 <p>…or with code:</p>
 <div class="indented2">
-<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;D:/Data/DroneData/black_rascal_creek&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;D:/Data/DroneData/black_rascal_creek&quot;</span>)</span></code></pre></div>
 </div>
 <p><br />
 </p>
@@ -754,7 +737,7 @@ working directory.</p>
 <p>When using relative paths, the first <code>'.'</code> represents the
 <strong>working directory</strong>.</p>
 <div class="indented2">
-<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" tabindex="-1"></a>my_data <span class="ot">=</span> <span class="fu">read.csv</span>(<span class="st">&quot;./data/soil_moist.csv&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" tabindex="-1"></a>my_data <span class="ot">=</span> <span class="fu">read.csv</span>(<span class="st">&quot;./data/soil_moist.csv&quot;</span>)</span></code></pre></div>
 </div>
 <p><br />
 </p>
@@ -763,11 +746,11 @@ your project.</p>
 <p><br />
 </p>
 </div>
-<div id="exercise-5-importing-csv-files-and-working-with-data-frames"
+<div id="exercise-4-importing-csv-files-and-working-with-data-frames"
 class="slide section level1">
-<h1>Exercise 5: Importing CSV Files and Working with Data Frames</h1>
+<h1>Exercise 4: Importing CSV Files and Working with Data Frames</h1>
 <div class="shaded-box li-single" style="width:50%;">
-<p><em>Exercise 5 Topics</em></p>
+<p><em>Exercise 4 Topics</em></p>
 <ol style="list-style-type: decimal">
 <li>import a csv</li>
 <li>create data frames from scratch<br />
@@ -793,11 +776,6 @@ class="slide section level1">
 <img src="images/fldr-tree_05.png" class="incremental stackme"/>
 </div>
 <p><br />
-</p>
-<p>
-<br/>
-<hr/>
-<strong>Next: </strong> <a href="hw02.html">Homework 2</a>
 </p>
 </div>
 
