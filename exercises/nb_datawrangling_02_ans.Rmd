@@ -24,8 +24,8 @@ We can join these columns to the Palmer Penguins dataset:
 library(palmerpenguins)
 library(dplyr)
 
-penguins %>%
-  left_join(genetics_tbl, by = "species") %>% 
+penguins |>
+  left_join(genetics_tbl, by = "species") |> 
   head()
 ```
 
@@ -35,7 +35,7 @@ We begin by importing the January 2050 projected daily minimum and maximum tempe
 
 ```{r chunk03}
 sac_temps_tbl <- read_csv("./data/sacramento_daily_temp_jan2050.csv")
-sac_temps_tbl %>% head()
+sac_temps_tbl |> head()
 ```
 
 \
@@ -45,8 +45,8 @@ Convert from a long to wide format:
 ```{r chunk04}
 library(tidyr)
 
-sac_temps_tbl %>% 
-  pivot_wider(names_from = clim_var, values_from = temp_f) %>% 
+sac_temps_tbl |> 
+  pivot_wider(names_from = clim_var, values_from = temp_f) |> 
   head()
 ```
 
@@ -57,9 +57,9 @@ sac_temps_tbl %>%
 Compute the daily temperature range:
 
 ```{r chunk05}
-sac_temps_tbl %>% 
-  pivot_wider(names_from = clim_var, values_from = temp_f) %>% 
-  mutate(diurnal_range_f = tasmax - tasmin) %>% 
+sac_temps_tbl |> 
+  pivot_wider(names_from = clim_var, values_from = temp_f) |> 
+  mutate(diurnal_range_f = tasmax - tasmin) |> 
   head()
 ```
 

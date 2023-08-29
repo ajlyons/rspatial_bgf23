@@ -103,8 +103,8 @@ Suppose we want to compare how bill length and flipper length look for each spec
 
 ```{r chunk07}
 library(dplyr)
-penguins %>% 
-  select(species, bill_length_mm, flipper_length_mm) %>% 
+penguins |> 
+  select(species, bill_length_mm, flipper_length_mm) |> 
   head()
 ```
 
@@ -113,8 +113,8 @@ penguins %>%
 You can also **rename** columns with `select()` (dplyr also has a `rename()` function):
 
 ```{r chunk08}
-penguins %>% 
-  select(species, bill = bill_length_mm, flipper = flipper_length_mm) %>% 
+penguins |> 
+  select(species, bill = bill_length_mm, flipper = flipper_length_mm) |> 
   head()
 ```
 
@@ -124,7 +124,7 @@ If you want to extract the values from a single column and get the results back 
 use `pull()` (similar to the `$` operator):
 
 ```{r chunk09}
-penguins %>% pull(species) %>% table()
+penguins |> pull(species) |> table()
 ```
 
 \
@@ -134,8 +134,8 @@ penguins %>% pull(species) %>% table()
 To **add a column**, we can use `mutate()`. Let's create a new column with the ratio of the bill to flipper length:
 
 ```{r chunk10}
-peng_billflip_tbl <- penguins %>% 
-  select(species, bill_length_mm, flipper_length_mm) %>%
+peng_billflip_tbl <- penguins |> 
+  select(species, bill_length_mm, flipper_length_mm) |>
   mutate(bill_flip_ratio = bill_length_mm / flipper_length_mm)
   
 head(peng_billflip_tbl)
@@ -146,7 +146,7 @@ head(peng_billflip_tbl)
 `mutate()` can also be used to modify existing columns, for example we could round bill_flip_ratio to 3 decimal places.
 
 ```{r chunk11}
-peng_billflip_tbl <- peng_billflip_tbl %>% 
+peng_billflip_tbl <- peng_billflip_tbl |> 
   mutate(bill_flip_ratio = round(bill_flip_ratio, 3))
 
 head(peng_billflip_tbl)
@@ -174,8 +174,8 @@ You can **sort** a table using `arrange()`, passing the column(s) you want to so
 Sort by flipper size (smallest to largest):
 
 ```{r chunk13}
-peng_billflip_tbl %>% 
-  arrange(flipper_length_mm) %>% 
+peng_billflip_tbl |> 
+  arrange(flipper_length_mm) |> 
   head()
 ```
 
@@ -184,8 +184,8 @@ peng_billflip_tbl %>%
 Largest to smallest:
 
 ```{r chunk14}
-peng_billflip_tbl %>% 
-  arrange(desc(flipper_length_mm)) %>% 
+peng_billflip_tbl |> 
+  arrange(desc(flipper_length_mm)) |> 
   head()
 ```
 
@@ -210,7 +210,7 @@ Logical expressions you can use in `filter()` include:
 Suppose we only wanted to work with observations of *Gentoo* penguins:
 
 ```{r chunk15}
-gentoo_billflip_tbl <- peng_billflip_tbl %>% 
+gentoo_billflip_tbl <- peng_billflip_tbl |> 
   filter(species == "Gentoo") 
 
 glimpse(gentoo_billflip_tbl)
@@ -221,9 +221,9 @@ glimpse(gentoo_billflip_tbl)
 If you want to filter on two criteria, add a second expression to `filter()`:
 
 ```{r chunk16}
-peng_billflip_tbl %>% 
-  filter(species == "Gentoo", flipper_length_mm > 220) %>% 
-  select(species, flipper_length_mm) %>% 
+peng_billflip_tbl |> 
+  filter(species == "Gentoo", flipper_length_mm > 220) |> 
+  select(species, flipper_length_mm) |> 
   glimpse()
 ```
 
@@ -232,8 +232,8 @@ peng_billflip_tbl %>%
 Suppose we wanted to identify the top 5 Gentoo observations with the largest bill_flip_ratio value. We can do that using a combination of `arrange()` and `slice()`:
 
 ```{r chunk17}
-gentoo_billflip_tbl %>% 
-  arrange(desc(bill_flip_ratio)) %>% 
+gentoo_billflip_tbl |> 
+  arrange(desc(bill_flip_ratio)) |> 
   slice(1:5) 
 ```
 
@@ -242,8 +242,8 @@ gentoo_billflip_tbl %>%
 We could also use `top_n()`:
 
 ```{r chunk18}
-gentoo_billflip_tbl %>% 
-  top_n(5, bill_flip_ratio) %>% 
+gentoo_billflip_tbl |> 
+  top_n(5, bill_flip_ratio) |> 
   arrange(desc(bill_flip_ratio))
 ```
 
@@ -286,9 +286,9 @@ In general you have three options for missing values:
 Suppose we wanted to keep only observations that have no missing values for flipper_length_mm, body_mass_g, and sex.
 
 ```{r chunk21}
-penguins %>% 
-  select(species, flipper_length_mm, body_mass_g, sex) %>% 
-  filter(!is.na(flipper_length_mm), !is.na(body_mass_g), !is.na(sex)) %>% 
+penguins |> 
+  select(species, flipper_length_mm, body_mass_g, sex) |> 
+  filter(!is.na(flipper_length_mm), !is.na(body_mass_g), !is.na(sex)) |> 
   head()
 ```
 
@@ -305,7 +305,7 @@ The main dplyr function for creating summaries of data is `summarise()`. The syn
 Compute the mean of several columns (using the `na.rm = TRUE` to ignore NA values):
 
 ```{r chunk22}
-penguins %>% 
+penguins |> 
   summarise(bill_len_mean = mean(bill_length_mm, na.rm = TRUE), 
             bill_depth_mean = mean(bill_depth_mm, na.rm = TRUE), 
             body_mass_mean = mean(body_mass_g, na.rm = TRUE))
@@ -320,8 +320,8 @@ Often you want to create summaries for groups of rows (i.e., a different unit of
 If we wanted to compute summary stats for each species, you would first group the rows by species with `group_by()`, and then use `summarise()`.
 
 ```{r chunk23}
-penguins %>% 
-  group_by(species) %>% 
+penguins |> 
+  group_by(species) |> 
   summarise(bill_len_mean = mean(bill_length_mm, na.rm = TRUE), 
             bill_depth_mean = mean(bill_depth_mm, na.rm = TRUE), 
             body_mass_mean = mean(body_mass_g, na.rm = TRUE))
@@ -334,8 +334,8 @@ penguins %>%
 For this question, we can use the `n()` function in `summarise()`:
 
 ```{r chunk24}
-penguins %>% 
-  group_by(island) %>% 
+penguins |> 
+  group_by(island) |> 
   summarise(num_records = n())
 ```
 
