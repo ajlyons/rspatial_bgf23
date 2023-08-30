@@ -471,14 +471,16 @@ group_by()
 <pre><code>## [1] 19066    13</code></pre>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="fu">head</span>(storms)</span></code></pre></div>
 <pre><code>## # A tibble: 6 × 13
-##   name   year month   day  hour   lat  long status              category  wind pressure tropicalstorm_force_diameter hurricane_force_diameter
-##   &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;fct&gt;                  &lt;dbl&gt; &lt;int&gt;    &lt;int&gt;                        &lt;int&gt;                    &lt;int&gt;
-## 1 Amy    1975     6    27     0  27.5 -79   tropical depression       NA    25     1013                           NA                       NA
-## 2 Amy    1975     6    27     6  28.5 -79   tropical depression       NA    25     1013                           NA                       NA
-## 3 Amy    1975     6    27    12  29.5 -79   tropical depression       NA    25     1013                           NA                       NA
-## 4 Amy    1975     6    27    18  30.5 -79   tropical depression       NA    25     1013                           NA                       NA
-## 5 Amy    1975     6    28     0  31.5 -78.8 tropical depression       NA    25     1012                           NA                       NA
-## 6 Amy    1975     6    28     6  32.4 -78.7 tropical depression       NA    25     1012                           NA                       NA</code></pre>
+##   name   year month   day  hour   lat  long status           category  wind pressure tropicalstorm_force_…¹
+##   &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;fct&gt;               &lt;dbl&gt; &lt;int&gt;    &lt;int&gt;                  &lt;int&gt;
+## 1 Amy    1975     6    27     0  27.5 -79   tropical depres…       NA    25     1013                     NA
+## 2 Amy    1975     6    27     6  28.5 -79   tropical depres…       NA    25     1013                     NA
+## 3 Amy    1975     6    27    12  29.5 -79   tropical depres…       NA    25     1013                     NA
+## 4 Amy    1975     6    27    18  30.5 -79   tropical depres…       NA    25     1013                     NA
+## 5 Amy    1975     6    28     0  31.5 -78.8 tropical depres…       NA    25     1012                     NA
+## 6 Amy    1975     6    28     6  32.4 -78.7 tropical depres…       NA    25     1012                     NA
+## # ℹ abbreviated name: ¹​tropicalstorm_force_diameter
+## # ℹ 1 more variable: hurricane_force_diameter &lt;int&gt;</code></pre>
 </div>
 <p><br />
 </p>
@@ -486,10 +488,10 @@ group_by()
 higher) storms?</em></p>
 <p>We can answer this question in one easy-to-read expression:</p>
 <div class="indented2 indented2r">
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a>storms <span class="sc">%&gt;%</span> </span>
-<span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a>  <span class="fu">select</span>(name, year, month, category) <span class="sc">%&gt;%</span>     <span class="do">## select the columns we need</span></span>
-<span id="cb5-3"><a href="#cb5-3" tabindex="-1"></a>  <span class="fu">filter</span>(category <span class="sc">&gt;=</span> <span class="dv">3</span>) <span class="sc">%&gt;%</span>                   <span class="do">## filter those rows where category &gt;= 3</span></span>
-<span id="cb5-4"><a href="#cb5-4" tabindex="-1"></a>  <span class="fu">group_by</span>(month) <span class="sc">%&gt;%</span>                         <span class="do">## group the rows by month</span></span>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a>storms <span class="sc">|&gt;</span> </span>
+<span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a>  <span class="fu">select</span>(name, year, month, category) <span class="sc">|&gt;</span>     <span class="do">## select the columns we need</span></span>
+<span id="cb5-3"><a href="#cb5-3" tabindex="-1"></a>  <span class="fu">filter</span>(category <span class="sc">&gt;=</span> <span class="dv">3</span>) <span class="sc">|&gt;</span>                   <span class="do">## filter those rows where category &gt;= 3</span></span>
+<span id="cb5-4"><a href="#cb5-4" tabindex="-1"></a>  <span class="fu">group_by</span>(month) <span class="sc">|&gt;</span>                         <span class="do">## group the rows by month</span></span>
 <span id="cb5-5"><a href="#cb5-5" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">num_strong_hurricanes =</span> <span class="fu">n</span>())      <span class="do">## for each group, report the count</span></span></code></pre></div>
 <pre><code>## # A tibble: 5 × 2
 ##   month num_strong_hurricanes
@@ -598,8 +600,8 @@ data about the genetics of different iris species:</p>
 <p>We can join these additional columns to the iris data frame with
 <code>left_join()</code>:</p>
 <div class="indented4 indented1-r">
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a>iris <span class="sc">%&gt;%</span> </span>
-<span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a>  <span class="fu">left_join</span>(iris_genetics, <span class="at">by =</span> <span class="st">&quot;Species&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a>iris <span class="sc">|&gt;</span> </span>
+<span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a>  <span class="fu">left_join</span>(iris_genetics, <span class="at">by =</span> <span class="st">&quot;Species&quot;</span>) <span class="sc">|&gt;</span> </span>
 <span id="cb9-3"><a href="#cb9-3" tabindex="-1"></a>  <span class="fu">slice</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>)</span></code></pre></div>
 <pre><code>##    Sepal.Length Sepal.Width Petal.Length Petal.Width Species num_genes prp_alles_recessive
 ## 1           5.1         3.5          1.4         0.2  setosa     42000                 0.8
