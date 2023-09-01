@@ -6,7 +6,7 @@
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <meta http-equiv="Content-Style-Type" content="text/css" />
   <meta name="generator" content="pandoc" />
-  <meta name="author" content="Review of Session 2  " />
+  <meta name="author" content="Review of Session 3  " />
   <meta name="copyright" content="<span class='footer-right'><a href='../acknowledgements.html'>Acknowledgements</a></span><span class='footer-right'><a href=' https://etherpad.wikimedia.org/p/rspatial-bgf23 ' target='_blank'>Forum</a></span><span class='footer-right'><a href=' https://ajlyons.github.io/rspatial_bgf23 '> https://ajlyons.github.io/rspatial_bgf23 </a></span><span class='footer-right'><a href='../index.html'>Home</a></span><span class='footer-subtitle'> Spatial Data Analysis with R </span>"/>
   <meta name="font-size-adjustment" content="2"/>
   <title>Spatial Data Analysis with R  BayGeo, Fall 2023</title>
@@ -92,6 +92,8 @@
   <link href="lib/slidy-2/styles/slidy.css" rel="stylesheet" />
   <script src="lib/slidy-2/scripts/slidy.js"></script>
   <script src="lib/slidy_shiny-1/slidy_shiny.js"></script>
+  <script src="lib/kePrint-0.0.1/kePrint.js"></script>
+  <link href="lib/lightable-0.0.1/lightable.css" rel="stylesheet" />
   <link rel="stylesheet" type="text/css" media="screen, projection, print"
    href="../css/slidy_styles.css" />
   <meta name="duration" content="0" />
@@ -103,145 +105,216 @@
 with R </span><br/><span class="course-subtitle">BayGeo, Fall
 2023</span></h1>
   <p class="author">
-Review of Session 2 <br/><img src='images/computer_review_414x300.png'/>
+Review of Session 3 <br/><img src='images/computer_review_414x300.png'/>
   </p>
-</div>
-<div class="slide section level1">
-
-<p><br />
-</p>
-<p><br />
-</p>
-<p><img src="./images/postit_bg-trans_with-note_320x320.png"
-style="display:block; margin:1em auto; border:none;" /></p>
 </div>
 <div id="warm-up-quiz" class="slide section level1">
 <h1>Warm-Up Quiz</h1>
 <p><br />
 </p>
 <p><img src="./images/warmup_720x480.jpg"
-style="display:block; margin:1em auto; border:none;" /><br />
+style="display:block; margin:1em auto; border:none;" /></p>
+<p><br />
 </p>
-<!-------
-
-Mostly to save time and increase interactivity, I decided to do a little quiz rather than a slide review.
-
-# Review from Part II 
-
-<div class = "indented2 li-single incremental">
-
-- The most common class for storing tabular data in R is the **data frame**
-
-- View the first few rows of a data frame with **`head()`**
-
-- View an entire data frame with **`View()`**
-
-- Grab an individual column with  **`$`**
-
 </div>
-
------->
-</div>
-<div id="plotting" class="slide section level1">
-<h1>Plotting</h1>
-<p>“Base R” comes with some basic plot functions:<br/></p>
-<p><span style="display:block; margin-left:1em;">
-<code>hist(x)</code><br/> <code>boxplot(x)</code><br/>
-<code>plot(x, y)              ## scatterplot</code><br/>
-<code>plot(x, y, type = 'b')  ## 'b' = plot both points and lines</code>
-</span></p>
-<p>There are packages designing specifically for plotting (e.g.,
-<code>ggplot2</code>)</p>
-</div>
-<div id="packages" class="slide section level1">
-<h1>Packages</h1>
+<div id="dplyr" class="slide section level1">
+<h1><code>dplyr</code></h1>
+<script language="javascript" type="text/javascript">w3c_slidy.mouse_click_enabled = false;</script>
+<p><strong>Useful <code>dplyr</code> functions:</strong></p>
+<table class="tbl_compact">
+<tbody>
+<tr>
+<td style="text-align:left;width: 12em; ">
+select column(s)
+</td>
+<td style="text-align:left;font-family: monospace;">
+select()
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 12em; ">
+select rows
+</td>
+<td style="text-align:left;font-family: monospace;">
+filter()
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 12em; ">
+order rows
+</td>
+<td style="text-align:left;font-family: monospace;">
+arrange()
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 12em; ">
+add new columns
+</td>
+<td style="text-align:left;font-family: monospace;">
+mutate()
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 12em; ">
+join data frames
+</td>
+<td style="text-align:left;font-family: monospace;">
+left_join(), right_join(), inner_join()
+</td>
+</tr>
+</tbody>
+</table>
+<p>See <a href="../extras/data-transformation.pdf" target="_blank"
+rel="noopener"><strong><code>dplyr</code> cheatsheet</strong></a> for
+more</p>
+<p><br />
+</p>
+<p><strong>Filter rows</strong></p>
 <div class="indented2">
-<p><strong>packages</strong> are the key to productivity with R</p>
-<p>packages mainly provide additional <strong>functions</strong> (and
-sometimes <strong>data</strong>)</p>
-<p>key packages for geospatial data include
-<strong><code>sf</code></strong> and
-<strong><code>terra</code></strong></p>
-<p>the <strong><em>tidyverse</em></strong> is a family of packages that
-use <strong>piping syntax</strong></p>
-<p><strong>install</strong> packages from the ‘Packages’ pane in
-RStudio, or <code>install.packages()</code></p>
-<p><strong>load</strong> packages into memory with
-<strong><code>library()</code></strong></p>
-<p>to prevent clashes with duplicate function names, specify the package
-using the <code>pkgname::</code> prefix (e.g.,
-<code>dplyr::filter()</code>), or indicate your preferences using the
-<strong><code>conflicted</code></strong> package</p>
+<p><code>iris |&gt; filter(Sepal.Length &gt; 7, Species=="virginica")</code></p>
+<p><code>iris |&gt; slice(5:10)</code></p>
+<p><code>iris |&gt; filter(Sepal.Length &gt; 7, Species=="virginica")</code></p>
+<p><code>iris |&gt; slice(5:10)</code></p>
 </div>
-</div>
-<div id="functions" class="slide section level1">
-<h1>Functions</h1>
-<p><img src="./images/functions-using_880x350x256.png"
-style="display:block; margin:1em auto;" /></p>
-</div>
-<div id="piping-syntax" class="slide section level1">
-<h1>Piping Syntax</h1>
+<p><br />
+</p>
+<p><strong>Subset, rearrange, and rename columns</strong></p>
 <div class="indented2">
-<p><tt>fun_a() <strong>|&gt;</strong> fun_b() <strong>|&gt;</strong>
-fun_c() <strong>|&gt;</strong> … </tt></p>
-<pre style="background-color:white; border:none;">
-iris |> filter(Sepal.Length > 7) |> mutate(width_length = Sepal.Width * Sepal.Length)
-<span style="color:DimGrey;">  │        │                             │
-  │        │                             └─ create a new column
-  │        │
-  │        ├─ select those rows where Sepal.Length > 7
-  │        └─ don't have to specify the data frame
-  │    
-  └ start with this data frame 
-</span></pre>
-</div>
-<div class="indented2" style="font-family:monospace">
-<p>ca_counties |&gt;<br />
-  st_transform(4326) |&gt;<br />
-  st_geometry() |&gt;<br />
-  plot()</p>
+<p><code>iris |&gt; select(Petal.Length, Species)</code></p>
+<p><code>iris |&gt; select(pet_len = Petal.Length, species = Species)</code></p>
 </div>
 <p><br />
 </p>
 </div>
-<div id="data-frames" class="slide section level1">
-<h1>Data Frames</h1>
-<p>The most common class for storing tabular data in R is the
-<strong>data frame</strong></p>
-<p>View the first few rows of a data frame with
-<strong><code>head()</code></strong></p>
-<p>View an entire data frame with
-<strong><code>View()</code></strong></p>
-<p>Grab an individual column with <strong><code>$</code></strong></p>
-<!------
-
-Grab specific rows and columns with <span style='font-weight:bold; font-family:monospace;'>my_df[*rows-expression*, *cols-expression*]</span>
-
-<div class="indented2">
-where *rows-expression* and *cols-expression* are a vector of:
-  <div class="indented2">
-  integers  
-  logicals (TRUE / FALSE) (or an expression that returns a vector of logicals)
-  column names
-  </div>
+<div
+id="sneak-preview-dplyr-functions-work-with-spatial-data-frames-also"
+class="slide section level1">
+<h1>Sneak Preview: <code>dplyr</code> functions work with spatial data
+frames also!</h1>
+<table class="tbl_compact">
+<thead>
+<tr>
+<th style="text-align:left;">
+dplyr function
+</th>
+<th style="text-align:left;">
+GIS equivalent
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;font-family: monospace;">
+filter(), slice()
+</td>
+<td style="text-align:left;width: 12em; ">
+attribute query
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-family: monospace;">
+select()
+</td>
+<td style="text-align:left;width: 12em; ">
+drop field
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-family: monospace;">
+mutate
+</td>
+<td style="text-align:left;width: 12em; ">
+add field, recalculate field
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-family: monospace;">
+group_by() –&gt; summarize()
+</td>
+<td style="text-align:left;width: 12em; ">
+dissolve, union
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-family: monospace;">
+left_join(), right_join(), inner_join()
+</td>
+<td style="text-align:left;width: 12em; ">
+add table relate
+</td>
+</tr>
+</tbody>
+</table>
 </div>
-
------->
-</div>
-<div id="cheatsheets-check-in" class="slide section level1">
-<h1>Cheatsheets Check-In</h1>
+<div id="importing-data-from-the-cloud" class="slide section level1">
+<h1>Importing Data from the cloud</h1>
+<p>Three options</p>
+<div class="compact">
+<ol style="list-style-type: decimal">
+<li><p>Regular R functions that take URLs</p></li>
+<li><p><strong>API packages</strong></p>
 <ul>
-<li><p><a href="../extras/base-r_cheatsheet.pdf" target="_blank"
-rel="noopener">Base R cheatsheet</a></p></li>
-<li><p><a
-href="https://www.rforecology.com/uploads/The_essential_R_Cheatsheet_v1_0.pdf"
-target="_blank" rel="noopener">R for Ecology cheatsheet</a></p></li>
+<li><a href="https://github.com/Chicago/RSocrata" target="_blank"
+rel="noopener"><code>RSocrata</code></a><br />
+</li>
+<li><a href="https://walker-data.com/tidycensus/" target="_blank"
+rel="noopener"><code>tidyCensus</code></a><br />
+</li>
+<li><a href="https://ucanr-igis.github.io/caladaptr/" target="_blank"
+rel="noopener"><code>caladaptR</code></a></li>
+</ul></li>
+<li><p>Write your own download code</p></li>
+</ol>
+</div>
+<p><br />
+</p>
+</div>
+<div id="socrata-api" class="slide section level1">
+<h1>Socrata API</h1>
+<div class="compact">
+<ul>
+<li>Used by a lot of orgs to share data (including <a
+href="https://datasf.org/opendata/"><strong>DataSF</strong></a>)</li>
+<li>Every dataset has a:</li>
 </ul>
+</div>
+<div class="compact" style="margin-left:2em;">
+<ul>
+<li>preview URL - tells you about the data, where it came from, which
+columns it has, preview, etc.</li>
+<li>resource URL - direct link to the CSV, JSON, GeoJSON, or another
+standard filetype</li>
+</ul>
+</div>
+<div class="compact">
+<ul>
+<li>Don’t need it all? Add a query parameter to the URL:</li>
+</ul>
+<p style="font-family:monospace; margin-left:4em;">
+<a href="https://data.sfgov.org/resource/wwmu-gmzc.json"
+class="uri">https://data.sfgov.org/resource/wwmu-gmzc.json</a><span
+style="color:crimson;">?release_year=2011</span>
+</p>
+<ul>
+<li>RSocrata package</li>
+</ul>
+</div>
+<div class="compact" style="margin-left:2em;">
+<ul>
+<li>convenience functions<br />
+</li>
+<li>pass a API token</li>
+<li>parse JSON results into a data frame</li>
+<li>list datasets on a Socrata domain</li>
+<li>write to a Socrata dataset</li>
+</ul>
+</div>
 <p>
 <br/>
 <hr/>
-<strong>Next: </strong> <a href="r-intro03-wrangling.html">Data
-wrangling part 1</a>
+<strong>Next: </strong> <a href="r-intro04-wrangling2.html">Data
+wrangling part 2</a>
 </p>
 </div>
 
