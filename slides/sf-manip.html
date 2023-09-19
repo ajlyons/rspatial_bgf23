@@ -263,6 +263,7 @@ software, tools, etc.</p>
 <p>sf employs a standard called “Well Known Text” (WKT) to encode the
 geometry. WKT is a very simple written representation of the
 ‘connect-the-dots’ vector data model.</p>
+<div class="indented2 indented2r">
 <table>
 <thead>
 <tr>
@@ -309,9 +310,10 @@ POLYGON ((1 0, 3 4, 5 1, 1 0))
 </tr>
 </tbody>
 </table>
+</div>
 <div class="tryit">
 <p>Import the Yosemite points-of-interest Shapefile.</p>
-<div class="indented1 indented1r">
+<div class="indented2 indented2r">
 <div class="sourceCode" id="cb1"><pre
 class="sourceCode r klippy copyme"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
 <span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a></span>
@@ -335,6 +337,7 @@ class="sourceCode r klippy copyme"><code class="sourceCode r"><span id="cb1-1"><
 ## [31] &quot;geometry&quot;</code></pre>
 <p><img src="sf-manip_files/figure-slidy/import_poi_klippy-1.png" width="768" /></p>
 <p>Take a closer look at the geometry column:</p>
+<div class="indented2 indented2r">
 <div class="sourceCode" id="cb3"><pre
 class="sourceCode r klippy copyme"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="fu">class</span>(yose_poi_utm<span class="sc">$</span>geometry)</span></code></pre></div>
 <pre><code>## [1] &quot;sfc_POINT&quot; &quot;sfc&quot;</code></pre>
@@ -354,6 +357,10 @@ class="sourceCode r klippy copyme"><code class="sourceCode r"><span id="cb5-1"><
 ## 6 POINT (270931.1 4179771)</code></pre>
 </div>
 </div>
+<div class="indented2 indented2r">
+
+</div>
+</div>
 <!--- try it --->
 <div class="infobox">
 <p>The geometry column of a <tt>sf</tt> object does not have to be
@@ -371,12 +378,15 @@ therefore <tt>sfc</tt> (simple features collection).</p>
 <p>It’s often useful to view the metadata of a sf object. You can get
 the bounding box (aka extent) with
 <tt><strong>st_bbox()</strong></tt>.</p>
+<div class="indented2 indented2r">
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="fu">st_bbox</span>(yose_poi_utm)</span></code></pre></div>
 <pre><code>##      xmin      ymin      xmax      ymax 
 ##  246416.2 4153717.3  301510.7 4208419.0</code></pre>
+</div>
 <p><strong>Coordinates</strong></p>
 <p>To extract the coordinates of a sf object as a matrix, use
 <tt><strong>st_coordinates()</strong></tt>.</p>
+<div class="indented2 indented2r">
 <div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">st_coordinates</span>(yose_poi_utm)</span>
 <span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a><span class="fu">head</span>(x)</span></code></pre></div>
 <pre><code>##             X       Y
@@ -386,6 +396,7 @@ the bounding box (aka extent) with
 ## [4,] 268620.1 4178344
 ## [5,] 269052.6 4178870
 ## [6,] 270931.1 4179771</code></pre>
+</div>
 </div>
 <div id="projections" class="slide section level1">
 <h1>Projections</h1>
@@ -440,9 +451,12 @@ established CRS. It provides two ways to specify a known projection:</p>
 <p>EPSG codes were developed by the European Petroluem Survey Group.</p>
 </div>
 <p>The following are equivalent:</p>
+<div class="indented2 indented2r">
 <div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a><span class="fu">st_crs</span>(<span class="st">&quot;+init=epsg:3857&quot;</span>)</span>
 <span id="cb11-2"><a href="#cb11-2" tabindex="-1"></a><span class="fu">st_crs</span>(<span class="dv">3857</span>)</span></code></pre></div>
+</div>
 <p>If you happen to know the proj4string, you can use it also</p>
+<div class="indented2 indented2r">
 <div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a><span class="fu">st_crs</span>(<span class="st">&quot;+proj=utm +zone=10 +ellps=GRS80 +datum=NAD83 +units=m +no_defs&quot;</span>)</span></code></pre></div>
 <pre><code>## Coordinate Reference System:
 ##   User input: +proj=utm +zone=10 +ellps=GRS80 +datum=NAD83 +units=m +no_defs 
@@ -485,6 +499,7 @@ established CRS. It provides two ways to specify a known projection:</p>
 ##             LENGTHUNIT[&quot;metre&quot;,1,
 ##                 ID[&quot;EPSG&quot;,9001]]]]</code></pre>
 </div>
+</div>
 <div id="common-epsg-numbers" class="slide section level1">
 <h1>Common EPSG Numbers</h1>
 <h2 id="geographic-crss">Geographic CRSs</h2>
@@ -506,7 +521,7 @@ href="http://www.spatialreference.org"
 target="_blank">http://www.spatialreference.org</a>. (Google usually
 works also).</p>
 <p>Reference code for your convenience:</p>
-<div class="indented1 indented1-r">
+<div class="indented2 indented2r">
 <div class="sourceCode" id="cb14"><pre
 class="sourceCode r klippy copyme"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a><span class="do">## Some common epsg numbers in California</span></span>
 <span id="cb14-2"><a href="#cb14-2" tabindex="-1"></a>epsg_geo_wgs84 <span class="ot">&lt;-</span> <span class="dv">4326</span></span>
@@ -529,6 +544,7 @@ target="_blank">Projection and Datum Guidelines for California</a>
 <div id="view-or-assign-the-crs" class="slide section level1">
 <h1>View or Assign the CRS</h1>
 <p><strong>View the CRS</strong></p>
+<div class="indented2 indented2r">
 <div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a>yose_trails <span class="ot">&lt;-</span> sf<span class="sc">::</span><span class="fu">st_read</span>(<span class="st">&quot;./data/yose_trails.gdb&quot;</span>, <span class="at">layer=</span><span class="st">&quot;Trails&quot;</span>)</span></code></pre></div>
 <pre><code>## Reading layer `Trails&#39; from data source `D:\Workshops\R-Spatial\rspatial_mod\outputs\rspatial_bgf23\exercises\data\yose_trails.gdb&#39; using driver `OpenFileGDB&#39;
 ## Simple feature collection with 1074 features and 13 fields
@@ -578,12 +594,15 @@ target="_blank">Projection and Datum Guidelines for California</a>
 ##         AREA[&quot;North America - between 120°W and 114°W - onshore and offshore. Canada - Alberta; British Columbia; Northwest Territories; Nunavut. United States (USA) - California; Idaho; Nevada, Oregon; Washington.&quot;],
 ##         BBOX[30.88,-120,83.5,-114]],
 ##     ID[&quot;EPSG&quot;,26911]]</code></pre>
+</div>
 <p><strong>Set the CRS</strong></p>
 <p>Occasionally, you have a <tt>sf</tt> object that doesn’t have a CRS
 recorded. This is most common when you are importing a CSV file and are
 turning it into a <tt>sf</tt> object. In thse cases, you can use
 <tt>st_crs()</tt> to assign the CRS.</p>
+<div class="indented2 indented2r">
 <div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" tabindex="-1"></a><span class="fu">st_crs</span>(my_gps_pts) <span class="ot">&lt;-</span> <span class="dv">4326</span></span></code></pre></div>
+</div>
 <p>Note: this is <em>not</em> the same as projecting data. You’re simply
 telling it the CRS.</p>
 </div>
@@ -594,11 +613,14 @@ telling it the CRS.</p>
 <em>new_crs</em>)</strong></tt></p>
 <p>Let’s ‘unproject’ the Yosemite trails layer from UTM to geographic
 coordinates.</p>
+<div class="indented2 indented2r">
 <div class="sourceCode" id="cb20"><pre
 class="sourceCode r klippy copyme"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" tabindex="-1"></a><span class="do">## (Un)project the trails layer to geographic coordinates</span></span>
 <span id="cb20-2"><a href="#cb20-2" tabindex="-1"></a>yose_trails_ll <span class="ot">&lt;-</span> <span class="fu">st_transform</span>(yose_trails, <span class="dv">4269</span>)</span></code></pre></div>
+</div>
 <p>Now that the trails are in geographic coordinates, we can overlay
 them on the boundary and historical points.</p>
+<div class="indented2 indented2r">
 <div class="sourceCode" id="cb21"><pre
 class="sourceCode r klippy copyme"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" tabindex="-1"></a>yose_hp_ll <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">&quot;./data/yose_historic_pts.kml&quot;</span>, <span class="at">layer=</span><span class="st">&quot;yose_historic_places&quot;</span>, <span class="at">quiet=</span><span class="cn">TRUE</span>)</span>
 <span id="cb21-2"><a href="#cb21-2" tabindex="-1"></a></span>
@@ -607,11 +629,12 @@ class="sourceCode r klippy copyme"><code class="sourceCode r"><span id="cb21-1">
 <span id="cb21-5"><a href="#cb21-5" tabindex="-1"></a><span class="fu">plot</span>(yose_hp_ll <span class="sc">|&gt;</span> <span class="fu">st_geometry</span>(), <span class="at">col=</span><span class="st">&quot;gray30&quot;</span>, <span class="at">pch=</span><span class="dv">16</span>, <span class="at">add=</span><span class="cn">TRUE</span>)</span>
 <span id="cb21-6"><a href="#cb21-6" tabindex="-1"></a><span class="fu">plot</span>(yose_bnd_ll <span class="sc">|&gt;</span> <span class="fu">st_geometry</span>(), <span class="at">col=</span><span class="cn">NA</span>, <span class="at">border=</span><span class="st">&quot;chartreuse4&quot;</span>, <span class="at">lwd=</span><span class="dv">3</span>, <span class="at">add=</span><span class="cn">TRUE</span>)</span></code></pre></div>
 <p><img src="sf-manip_files/figure-slidy/plot_ynp_all_klippy-1.png" width="768" /></p>
+</div>
 <div class="tip">
 <p>You can project one layer to match another without knowing the exact
 CRS. Just extract the CRS of the layer you’re trying to match with
 st_crs(), and use that as the second argument in st_transform().</p>
-<div class="indented1 indented1-r">
+<div class="indented2 indented2r">
 <div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" tabindex="-1"></a>yose_trails_ll <span class="ot">&lt;-</span> <span class="fu">st_transform</span>(yose_trails, <span class="fu">st_crs</span>(yose_bnd_ll))</span></code></pre></div>
 </div>
 </div>
@@ -619,7 +642,7 @@ st_crs(), and use that as the second argument in st_transform().</p>
 <p>Import the <a href="../datasets.html#yose_roads">Yosemite roads</a>
 and add those to your map. You may use the code below to get
 started.</p>
-<div class="indented1 indented1-r">
+<div class="indented2 indented2r">
 <div class="sourceCode" id="cb23"><pre
 class="sourceCode r klippy copyme"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" tabindex="-1"></a><span class="do">## Get the path to the geodatabase </span></span>
 <span id="cb23-2"><a href="#cb23-2" tabindex="-1"></a>gdbroads_fn <span class="ot">&lt;-</span> <span class="st">&quot;./data/yose_roads.gdb&quot;</span></span>
@@ -631,6 +654,7 @@ class="sourceCode r klippy copyme"><code class="sourceCode r"><span id="cb23-1">
 <p><span id="soln_zbpaxy" class="showhidesoln"
 onclick="showHide(&#39;zbpaxy&#39;);return false;">[Solution]</span></p>
 <div id="zbpaxy" class="hint">
+<div class="indented2 indented2r">
 <div class="sourceCode" id="cb24"><pre
 class="sourceCode r klippy copyme"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" tabindex="-1"></a><span class="do">## (Un)project the roads layer to geographic coordinates</span></span>
 <span id="cb24-2"><a href="#cb24-2" tabindex="-1"></a>yose_roads_ll <span class="ot">&lt;-</span> <span class="fu">st_transform</span>(yose_roads_utm, <span class="dv">4269</span>)</span>
@@ -640,8 +664,11 @@ class="sourceCode r klippy copyme"><code class="sourceCode r"><span id="cb24-1">
 <span id="cb24-6"><a href="#cb24-6" tabindex="-1"></a><span class="fu">plot</span>(yose_roads_ll <span class="sc">|&gt;</span> <span class="fu">st_geometry</span>(), <span class="at">col=</span><span class="st">&quot;navyblue&quot;</span>, <span class="at">lwd=</span><span class="dv">1</span>, <span class="at">lty=</span><span class="dv">5</span>, <span class="at">add=</span><span class="cn">TRUE</span>)</span>
 <span id="cb24-7"><a href="#cb24-7" tabindex="-1"></a><span class="fu">plot</span>(yose_hp_ll <span class="sc">|&gt;</span> <span class="fu">st_geometry</span>(), <span class="at">col=</span><span class="st">&quot;gray30&quot;</span>, <span class="at">pch=</span><span class="dv">16</span>, <span class="at">add=</span><span class="cn">TRUE</span>)</span>
 <span id="cb24-8"><a href="#cb24-8" tabindex="-1"></a><span class="fu">plot</span>(yose_bnd_ll <span class="sc">|&gt;</span> <span class="fu">st_geometry</span>(), <span class="at">col=</span><span class="cn">NA</span>, <span class="at">border=</span><span class="st">&quot;chartreuse4&quot;</span>, <span class="at">lwd=</span><span class="dv">3</span>, <span class="at">add=</span><span class="cn">TRUE</span>)</span></code></pre></div>
+</div>
+<div class="indented2 indented2r">
 <pre><code>## [1] TRUE</code></pre>
 <p><img src="sf-manip_files/figure-slidy/plot_ynp_roads_execute-1.png" width="768" /></p>
+</div>
 </div>
 </div>
 </div>
@@ -667,7 +694,7 @@ proj4 string)</li>
 Turn the quakes Data Frame into a sf Object</h3>
 <p><code>quakes</code> is a dataframe that comes with R (in the datasets
 package). Here we turn it into a sf data frame.</p>
-<div class="indented1 indented1r">
+<div class="indented2 indented2r">
 <div class="sourceCode" id="cb26"><pre
 class="sourceCode r klippy copyme"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" tabindex="-1"></a><span class="do">## Make a sf object from the built-in &#39;quakes&#39; dataset</span></span>
 <span id="cb26-2"><a href="#cb26-2" tabindex="-1"></a><span class="fu">head</span>(quakes)</span>
@@ -694,14 +721,14 @@ class="sourceCode r klippy copyme"><code class="sourceCode r"><span id="cb26-1">
 <p>If you name the output file with a standard extension (e.g., .shp,
 .kml), <tt>st_write()</tt> will know which format to use. Otherwise you
 have to add the <tt>driver</tt> argument.</p>
-<div class="indented1 indented1r">
+<div class="indented2 indented2r">
 <div class="sourceCode" id="cb28"><pre
 class="sourceCode r klippy copyme"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" tabindex="-1"></a><span class="do">## For testing purposes, pull out fires from the 2000s</span></span>
 <span id="cb28-2"><a href="#cb28-2" tabindex="-1"></a>yose_fires20_pt <span class="ot">&lt;-</span> yose_fires_pt <span class="sc">|&gt;</span> <span class="fu">filter</span>(DECADE <span class="sc">==</span> <span class="dv">2000</span>)</span>
 <span id="cb28-3"><a href="#cb28-3" tabindex="-1"></a></span>
 <span id="cb28-4"><a href="#cb28-4" tabindex="-1"></a><span class="do">## Export to Shapefile</span></span>
 <span id="cb28-5"><a href="#cb28-5" tabindex="-1"></a><span class="fu">st_write</span>(yose_fires20_pt, </span>
-<span id="cb28-6"><a href="#cb28-6" tabindex="-1"></a>         <span class="at">dsn=</span><span class="st">&quot;~yose_fires20s_pt.shp&quot;</span>)</span>
+<span id="cb28-6"><a href="#cb28-6" tabindex="-1"></a>         <span class="at">dsn=</span><span class="st">&quot;yose_fires20s_pt.shp&quot;</span>)</span>
 <span id="cb28-7"><a href="#cb28-7" tabindex="-1"></a></span>
 <span id="cb28-8"><a href="#cb28-8" tabindex="-1"></a><span class="do">## Export to GeoPackage</span></span>
 <span id="cb28-9"><a href="#cb28-9" tabindex="-1"></a><span class="fu">st_write</span>(yose_fires20_pt, </span>
@@ -716,10 +743,13 @@ file already exists. To overwrite existing data (not recommended), add
 </div>
 <div id="notebook-time" class="slide section level1">
 <h1>Notebook Time!</h1>
+<div class="indented2 indented2r">
 <p><a href='https://raw.githubusercontent.com/ajlyons/rspatial_bgf23/master/exercises/nb_sf-manip.Rmd' target='_blank'>nb_sf-manip.Rmd</a></p> <div class='nb_desc'>Convert a CSV file to a simple feature data frame, project it, and export as GeoJSON</div> <p style='font-size:80%;'><a href='https://ajlyons.github.io/rspatial_bgf23/exercises/nb_sf-manip.nb.html' target='_blank' rel='noopener' style='color:#8993d3;'>preview notebook</a> | <a href='https://ajlyons.github.io/rspatial_bgf23/exercises/nb_sf-manip_ans.nb.html' target='_blank' style='color:#8993d3;'>answer key</a></p>
+</div>
 </div>
 <div id="repairing-geometries" class="slide section level1">
 <h1>Repairing Geometries</h1>
+<div class="indented2 indented2r">
 <table>
 <thead>
 <tr>
@@ -767,6 +797,7 @@ repair common geometry problems
 </tbody>
 </table>
 </div>
+</div>
 <div id="converting-sf-sp" class="slide section level1">
 <h1>Converting sf ↔︎ sp</h1>
 <p>sf is relatively new, and many R packages still use the older data
@@ -789,7 +820,7 @@ sf → sp
 </div>
 </p>
 <h3 id="example-sp-sf">Example: sp → sf</h3>
-<div class="indented1 indented1r">
+<div class="indented2 indented2r">
 <div class="sourceCode" id="cb29"><pre
 class="sourceCode r klippy copyme"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" tabindex="-1"></a><span class="do">## Get a sample sp object from the maptools package</span></span>
 <span id="cb29-2"><a href="#cb29-2" tabindex="-1"></a><span class="fu">library</span>(maptools)</span></code></pre></div>
